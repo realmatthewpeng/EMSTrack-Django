@@ -72,7 +72,7 @@ RUN set -x && \
     ln -s /etc/emstrack/log $APP_HOME/log
 
 # Clone application
-COPY . .
+COPY . $APP_HOME
 
 # Init scripts
 COPY scripts/. $SCRIPT_HOME
