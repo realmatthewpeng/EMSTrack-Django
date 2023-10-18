@@ -65,6 +65,7 @@ RUN set -x && \
     mkdir -p /mosquitto-test/data && \
     touch /mosquitto-test/data/passwd
 RUN set -x && \
+    mkdir -p /etc/emstrack && \
     mkdir -p /etc/emstrack/log && \
     touch /etc/emstrack/log/django.log && \
     touch /etc/emstrack/log/emstrack.log && \
