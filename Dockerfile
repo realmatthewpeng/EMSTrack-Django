@@ -46,33 +46,33 @@ RUN pip install .
 WORKDIR $APP_HOME
 
 # link migration directories into persistent volume
-RUN set -x && \
-    mkdir -p /etc/emstrack/migrations && \
-    mkdir -p /etc/emstrack/migrations/ambulance && \
-    mkdir ambulance && \
-    ln -s /etc/emstrack/migrations/ambulance $APP_HOME/ambulance/migrations && \
-    mkdir -p /etc/emstrack/migrations/login && \
-    mkdir login && \
-    ln -s /etc/emstrack/migrations/login     $APP_HOME/login/migrations && \
-    mkdir -p /etc/emstrack/migrations/hospital && \
-    mkdir hospital && \
-    ln -s /etc/emstrack/migrations/hospital  $APP_HOME/hospital/migrations && \
-    mkdir -p /etc/emstrack/migrations/equipment && \
-    mkdir equipment && \
-    ln -s /etc/emstrack/migrations/equipment $APP_HOME/equipment/migrations && \
-    # mosquitto directories
-    mkdir -p /mosquitto/data && \
-    touch /mosquitto/data/passwd && \
-    mkdir -p /mosquitto-test/data && \
-    touch /mosquitto-test/data/passwd && \
-    # log directories
-    mkdir -p /etc/emstrack/log && \
-    touch /etc/emstrack/log/django.log && \
-    touch /etc/emstrack/log/emstrack.log && \
-    ln -s /etc/emstrack/log $APP_HOME/log
+# RUN set -x && \
+#     mkdir -p /etc/emstrack/migrations && \
+#     mkdir -p /etc/emstrack/migrations/ambulance && \
+#     mkdir ambulance && \
+#     ln -s /etc/emstrack/migrations/ambulance $APP_HOME/ambulance/migrations && \
+#     mkdir -p /etc/emstrack/migrations/login && \
+#     mkdir login && \
+#     ln -s /etc/emstrack/migrations/login     $APP_HOME/login/migrations && \
+#     mkdir -p /etc/emstrack/migrations/hospital && \
+#     mkdir hospital && \
+#     ln -s /etc/emstrack/migrations/hospital  $APP_HOME/hospital/migrations && \
+#     mkdir -p /etc/emstrack/migrations/equipment && \
+#     mkdir equipment && \
+#     ln -s /etc/emstrack/migrations/equipment $APP_HOME/equipment/migrations && \
+#     # mosquitto directories
+#     mkdir -p /mosquitto/data && \
+#     touch /mosquitto/data/passwd && \
+#     mkdir -p /mosquitto-test/data && \
+#     touch /mosquitto-test/data/passwd && \
+#     # log directories
+#     mkdir -p /etc/emstrack/log && \
+#     touch /etc/emstrack/log/django.log && \
+#     touch /etc/emstrack/log/emstrack.log && \
+#     ln -s /etc/emstrack/log $APP_HOME/log
 
 # Clone application
-COPY . $APP_HOME
+COPY . .
 
 # Init scripts
 COPY scripts/. $SCRIPT_HOME
