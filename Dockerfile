@@ -59,12 +59,10 @@ RUN set -x && \
     ln -s /etc/emstrack/migrations/hospital  $APP_HOME/hospital/migrations && \
     mkdir -p /etc/emstrack/migrations/equipment && \
     ln -s /etc/emstrack/migrations/equipment $APP_HOME/equipment/migrations && \
-    # mosquitto directories
     mkdir -p /mosquitto/data && \
     touch /mosquitto/data/passwd && \
     mkdir -p /mosquitto-test/data && \
     touch /mosquitto-test/data/passwd && \
-    # log directories
     mkdir -p /etc/emstrack/log && \
     touch /etc/emstrack/log/django.log && \
     touch /etc/emstrack/log/emstrack.log && \
