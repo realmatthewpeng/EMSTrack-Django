@@ -15,7 +15,7 @@ RUN set -x && \
 
 # Install node
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get install -y nodejs
+    apt-get install -y nodejs npm
 
 # Build variables
 ARG BUILD_APP_HOME=/app
