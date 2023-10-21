@@ -42,7 +42,6 @@ RUN git clone https://github.com/mcdeoliveira/django-import-export
 WORKDIR /tmp/django-import-export
 RUN pip install .
 
-
 WORKDIR $APP_HOME
 
 # create application directories
@@ -57,14 +56,6 @@ RUN set -x && \
     mkdir -p /etc/emstrack/migrations/equipment && \
     mkdir equipment && \
     # mosquitto directories
-    mkdir -p /mosquitto/data && \
-    touch /mosquitto/data/passwd && \
-    mkdir -p /mosquitto-test/data && \
-    touch /mosquitto-test/data/passwd && \
-    # log directories
-    mkdir -p /etc/emstrack/log && \
-    touch /etc/emstrack/log/django.log && \
-    touch /etc/emstrack/log/emstrack.log
 
 # Clone application
 COPY . .
