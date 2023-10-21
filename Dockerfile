@@ -14,8 +14,8 @@ RUN set -x && \
             rsync
 
 # Install node
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get install -y nodejs npm
+# RUN curl -sL https://deb.nodesource.com/setup_21.x | bash - && \
+RUN apt-get install -y nodejs npm
 
 # Build variables
 ARG BUILD_APP_HOME=/app
@@ -42,33 +42,31 @@ RUN git clone https://github.com/mcdeoliveira/django-import-export
 WORKDIR /tmp/django-import-export
 RUN pip install .
 
-
 WORKDIR $APP_HOME
+
+# create application directories
+RUN set -x && \
+    mkdir -p /etc/emstrack/migrations && \
+    mkdir -p /etc/emstrack/migrations/ambulance && \
+    mkdir ambulance && \
+    mkdir -p /etc/emstrack/migrations/login && \
+    mkdir login && \
+    mkdir -p /etc/emstrack/migrations/hospital && \
+    mkdir hospital && \
+    mkdir -p /etc/emstrack/migrations/equipment && \
+    mkdir equipment && \
+    # mosquitto directories
 
 # Clone application
 COPY . .
 
 # link migration directories into persistent volume
+# since fall of 2024 copy fails if links are made before
 RUN set -x && \
-    mkdir -p /etc/emstrack/migrations && \
-    mkdir -p /etc/emstrack/migrations/ambulance && \
     ln -s /etc/emstrack/migrations/ambulance $APP_HOME/ambulance/migrations && \
-    mkdir -p /etc/emstrack/migrations/login && \
     ln -s /etc/emstrack/migrations/login     $APP_HOME/login/migrations && \
-    mkdir -p /etc/emstrack/migrations/hospital && \
     ln -s /etc/emstrack/migrations/hospital  $APP_HOME/hospital/migrations && \
-    mkdir -p /etc/emstrack/migrations/equipment && \
-    ln -s /etc/emstrack/migrations/equipment $APP_HOME/equipment/migrations
-RUN set -x && \
-    mkdir -p /mosquitto/data && \
-    touch /mosquitto/data/passwd && \
-    mkdir -p /mosquitto-test/data && \
-    touch /mosquitto-test/data/passwd
-RUN set -x && \
-    mkdir -p /etc/emstrack && \
-    mkdir -p /etc/emstrack/log && \
-    touch /etc/emstrack/log/django.log && \
-    touch /etc/emstrack/log/emstrack.log && \
+    ln -s /etc/emstrack/migrations/equipment $APP_HOME/equipment/migrations && \
     ln -s /etc/emstrack/log $APP_HOME/log
 
 # Init scripts
