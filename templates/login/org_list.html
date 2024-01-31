@@ -10,6 +10,10 @@
 
             <h1>{% trans "Organizations" %}</h1>
 
+            <p>
+                <a href="{% url 'login:create-org' %}">{% trans "new" context "masculine" %}</a>
+            </p>
+
             {% if page_list %}
 
                 {% if page_list.has_other_pages %}

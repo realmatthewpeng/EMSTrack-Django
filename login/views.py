@@ -1111,3 +1111,14 @@ class OrganizationListView(PaginationViewMixin, ListView):
     template_name = 'login/org_list.html'
     ordering = ['name']
 
+class OrganizationCreateView(ListView):
+    model = Organization
+    template_name = 'login/org_create_form.html'
+    
+class OrganizationDetailView(ListView):
+    model = Organization
+    template_name = 'login/org_detail.html'
+
+class OrganizationUpdateView(ListView):
+    model = Organization
+    template_name = 'login/org_form.html'
