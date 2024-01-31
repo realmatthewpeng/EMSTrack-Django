@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+
+            <h1>{% trans "Organizations" %}</h1>
+
+            {% if page_list %}
+
+                {% if page_list.has_other_pages %}
+                <div class="row">
+                    <div class="col">
+                        {% include "pagination/numbers.html" %}
+                    </div>
+                    <div class="col float-right">
+                        {% include "pagination/sizes.html" %}
+                    </div>
+                </div>
+                {% endif %}
+
+            {% else %}
+
+                <p>{% trans "No organizations have been created yet." %}</p>
+
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

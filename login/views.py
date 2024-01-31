@@ -82,6 +82,7 @@ from .models import (
     ClientStatus,
     UserProfile,
     TokenLogin,
+    Organization,
 )
 from .permissions import get_permissions
 from .resources import (
@@ -1103,4 +1104,10 @@ class GroupHospitalPermissionProcessImportView(
 
     import_breadcrumbs = {'login:list-group': _("Groups")}
 
+# Organizations 
+
+class OrganizationListView(PaginationViewMixin, ListView):
+    model = Organization
+    template_name = 'login/org_list.html'
+    ordering = ['name']
 

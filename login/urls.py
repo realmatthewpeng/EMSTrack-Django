@@ -142,5 +142,11 @@ urlpatterns = [
     url(r'^mqtt/acl/$',
         views.MQTTAclView.as_view(),
         name='acl-mqtt'),
+
+    # organizations
+
+    url(r'^organization/$',
+        staff_member_required(views.OrganizationListView.as_view()),
+        name='list-org'),
     
 ]
