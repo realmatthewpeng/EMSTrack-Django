@@ -60,7 +60,7 @@ class Organization(models.Model):
     users = models.ManyToManyField(User)
 
     def get_absolute_url(self):
-        return reverse('login:detail-organization', kwargs={'pk': self.id})
+        return reverse('login:detail-org', kwargs={'pk': self.id})
 
     def __str__(self):
         return '{}'.format(self.name)

@@ -1111,10 +1111,17 @@ class OrganizationListView(PaginationViewMixin, ListView):
     template_name = 'login/org_list.html'
     ordering = ['name']
 
-class OrganizationCreateView(ListView):
+class OrganizationCreateView(SuccessMessageMixin, CreateView):
     model = Organization
+    fields = ['name', 'description']
     template_name = 'login/org_create_form.html'
+
+    def get_success_message(self, cleaned_data):
+        return "Successfully created organization '{}'".format(cleaned_data['name'])
     
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
 class OrganizationDetailView(ListView):
     model = Organization
     template_name = 'login/org_detail.html'
