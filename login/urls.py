@@ -154,18 +154,18 @@ urlpatterns = [
         staff_member_required(views.OrganizationCreateView.as_view()),
         name='create-org'),
 
-    # TODO: Vaishnavi, Nick
+    # TODO: Vaishnavi, Lauren, Evan
     url(r'^organization/detail/(?P<pk>[0-9]+)$',
         staff_member_required(views.OrganizationDetailView.as_view()),
         name='detail-org'),
 
-    # TODO: Vaishnavi, Nick
+    # TODO: Vaishnavi, Lauren, Evan
     url(r'^organization/update/(?P<pk>[0-9]+)$',
         staff_member_required(views.OrganizationUpdateView.as_view()),
         name='update-org'),
 
-    # TODO: import page, Lauren, Evan, Matthew
+    # TODO:
 
-    # TODO: export page, Lauren, Evan, Matthew
+    # TODO: 
     
 ]

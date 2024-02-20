@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% load static %} {% load i18n %} {% block content %}
+<!DOCTYPE html>
+<html>
+  <title>Update Organization Details</title>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static '/css/org_update.css' %}"
+  />
+  <div class="body">
+    <button>Save</button>
+    <main>
+      <h1>Update Organization Details</h1>
+      <form>
+        <label for="org_name">Organization Name:</label>
+        <input type="text" id="org_name" name="org_name" /><br />
+        <label for="org_name">Associated Medical Organization:</label>
+        <input type="text" id="assc_org" name="assc_org" /><br />
+        <label for="tags">Tags:</label>
+        <input type="text" id="tags" name="tags" /><br />
+        <label for="reg_vehicles">Registered Vehicles:</label>
+        <input type="text" id="reg_vehicles" name="reg_vehicles" /><br />
+        <input type="submit" value="Save" />
+      </form>
+    </main>
+  </div>
+</html>
+
+{% endblock %}
