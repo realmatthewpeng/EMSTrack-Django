@@ -1135,19 +1135,18 @@ class OrganizationExportView(ExportModelMixin, View):
     model = Organization
     resource_class = OrganizationResource
 
-# class UserImportView(ImportModelMixin, TemplateView):
-#     model = User
-#     resource_class = UserImportResource
+class OrganizationImportView(ImportModelMixin, TemplateView):
+    model = Organization
+    resource_class = OrganizationResource
 
-#     process_import_url = 'login:process-import-user'
-#     import_breadcrumbs = {'login:list-user': _("Users")}
+    process_import_url = 'login:process-import-org'
+    import_breadcrumbs = {'login:list-org': _("Organizations")}
 
+class OrganizationProcessImportView(SuccessMessageMixin, ProcessImportModelMixin, FormView):
+    model = Organization
+    resource_class = OrganizationResource
 
-# class UserProcessImportView(SuccessMessageMixin, ProcessImportModelMixin, FormView):
-#     model = User
-#     resource_class = UserImportResource
+    success_message = _('Successfully imported organizations')
+    success_url = reverse_lazy('login:list-org')
 
-#     success_message = _('Successfully imported users')
-#     success_url = reverse_lazy('login:list-user')
-
-#     import_breadcrumbs = {'login:list-user': _("Users")}
+    import_breadcrumbs = {'login:list-org': _("Organizations")}
