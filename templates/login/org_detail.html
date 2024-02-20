@@ -1,17 +1,65 @@
-{% extends "base.html" %}
-{% load static %}
-{% load i18n %}
+{% extends "base.html" %} {% load static %} {% load i18n %} {% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Organization Details</title>
+  </head>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static '/css/org_detail.css' %}"
+  />
+  <body>
+    <div class="body">
+      <button>Return to Organizations Page</button>
 
-{% block content %}
+      <!-- See ../ambulance/ambulance_details  -->
 
-<div class="container">
-    <div class="row">
-        <div class="col-md">
+      <!-- <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'ambulance:list' %}">{% trans "Vehicles" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ ambulance.identifier }}</li>
+    </ol> -->
 
-            <h1>{% trans "TODO: Page to view organization details." %}</h1>
-
-        </div>
+      <main>
+        <h1>Organization Details</h1>
+        <a href="./org_update.html">Edit</a>
+        <dl>
+          <dt>{% trans "Organization Name:" %}</dt>
+          <dd>{{ organization.name }}</dd>
+          <dt>{% trans "Description" %}</dt>
+          <dd>{{ organization.description }}</dd>
+          <!-- <dt>{% trans "Associated Medical Organization" %}</dt>
+          <dd>{% trans "GROUP" %}</dd> -->
+          <dt>{% trans "Creation Date:" %}</dt>
+          <dd>{% trans "CREATION_DATE" %}</dd>
+          <dt>{% trans "Number of Registered Vehicles:" %}</dt>
+          <dd>{% trans "NUM_REG" %}</dd>
+          <!-- <dt>{% trans "Tags:" %}</dt>
+          <dd>{% trans "TAGS" %}</dd> -->
+          <dt>{% trans "User List:" %}</dt>
+          <dd>
+            <ul>
+              <li>{% trans "User 1: ID_NUM" %}</li>
+              <li>{% trans "User 2: ID_NUM" %}</li>
+              <li>{% trans "User 3: ID_NUM" %}</li>
+              <li>{% trans "User 4: ID_NUM" %}</li>
+              <li>{% trans "User 5: ID_NUM" %}</li>
+            </ul>
+          </dd>
+          <dt>{% trans "Vehicle List:" %}</dt>
+          <dd>
+            <ul>
+              <li>{% trans "VEHICLE 1: ID_NUM" %}</li>
+              <li>{% trans "VEHICLE 2: ID_NUM" %}</li>
+              <li>{% trans "VEHICLE 3: ID_NUM" %}</li>
+              <li>{% trans "VEHICLE 4: ID_NUM" %}</li>
+              <li>{% trans "VEHICLE 5: ID_NUM" %}</li>
+            </ul>
+          </dd>
+        </dl>
+      </main>
     </div>
-</div>
+  </body>
+</html>
 
 {% endblock %}
