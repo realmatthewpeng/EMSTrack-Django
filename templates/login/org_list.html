@@ -12,6 +12,7 @@
 
             <p>
                 <a href="{% url 'login:create-org' %}">{% trans "new" context "masculine" %}</a>
+                <a href="{% url 'login:export-org' %}" class="ml-2">{% trans "export" %}</a>
             </p>
 
             {% if page_list %}

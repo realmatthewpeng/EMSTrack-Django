@@ -164,7 +164,17 @@ urlpatterns = [
         name='update-org'),
 
     # TODO: import page, Lauren, Evan, Matthew
+    # url(r'^organization/import/$',
+    #     staff_member_required(views.OrganizationImportView.as_view()),
+    #     name='import-org'),
+
+    # url(r'^organization/process_import/$',
+    #     staff_member_required(views.OrganizationProcessImportView.as_view()),
+    #     name='process-import-org'),
 
     # TODO: export page, Lauren, Evan, Matthew
+    url(r'^organization/export/$',
+        staff_member_required(views.OrganizationExportView.as_view()),
+        name='export-org'),
     
 ]

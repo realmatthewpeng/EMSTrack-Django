@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from import_export import resources, fields, widgets
 
-from login.models import GroupAmbulancePermission, GroupHospitalPermission
+from login.models import GroupAmbulancePermission, GroupHospitalPermission, Organization
 from login.util import PasswordReset
 
 logger = logging.getLogger(__name__)
@@ -138,3 +138,10 @@ class GroupHospitalPermissionResource(resources.ModelResource):
                   'can_read', 'can_write')
         export_order = ('id', 'group_name', 'hospital_name',
                         'can_read', 'can_write')
+        
+class OrganizationResource(resources.ModelResource):
+
+    class Meta:
+        model = Organization
+        fields = ('id', 'name', 'description')
+        export_order = ('id', 'name', 'description')

@@ -91,6 +91,7 @@ from .resources import (
     GroupAmbulancePermissionResource,
     GroupHospitalPermissionResource,
     UserImportResource,
+    OrganizationResource,
 )
 
 logger = logging.getLogger(__name__)
@@ -1129,3 +1130,24 @@ class OrganizationDetailView(ListView):
 class OrganizationUpdateView(ListView):
     model = Organization
     template_name = 'login/org_form.html'
+
+class OrganizationExportView(ExportModelMixin, View):
+    model = Organization
+    resource_class = OrganizationResource
+
+# class UserImportView(ImportModelMixin, TemplateView):
+#     model = User
+#     resource_class = UserImportResource
+
+#     process_import_url = 'login:process-import-user'
+#     import_breadcrumbs = {'login:list-user': _("Users")}
+
+
+# class UserProcessImportView(SuccessMessageMixin, ProcessImportModelMixin, FormView):
+#     model = User
+#     resource_class = UserImportResource
+
+#     success_message = _('Successfully imported users')
+#     success_url = reverse_lazy('login:list-user')
+
+#     import_breadcrumbs = {'login:list-user': _("Users")}
