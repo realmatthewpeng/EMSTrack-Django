@@ -15,7 +15,7 @@ from django.http.response import HttpResponse, HttpResponseForbidden
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView
 from django.views.generic.base import View, TemplateView
 from django.views.generic.detail import BaseDetailView
 from django.views.generic.edit import FormView, CreateView
@@ -1123,11 +1123,11 @@ class OrganizationCreateView(SuccessMessageMixin, CreateView):
     def get_success_url(self):
         return self.object.get_absolute_url()
 
-class OrganizationDetailView(ListView):
+class OrganizationDetailView(DetailView):
     model = Organization
     template_name = 'login/org_detail.html'
 
-class OrganizationUpdateView(ListView):
+class OrganizationUpdateView(UpdateView):
     model = Organization
     template_name = 'login/org_form.html'
 

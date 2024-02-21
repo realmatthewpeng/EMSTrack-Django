@@ -15,10 +15,14 @@
 
       <!-- See ../ambulance/ambulance_details  -->
 
-      <!-- <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url 'ambulance:list' %}">{% trans "Vehicles" %}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ ambulance.identifier }}</li>
-    </ol> -->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'login:list-org' %}">{% trans "Organizations" %}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          {{ organization.name }}
+        </li>
+      </ol>
 
       <main>
         <h1>Organization Details</h1>
