@@ -1,14 +1,22 @@
 {% extends "base.html" %} {% load static %} {% load i18n %} {% block content %}
+
 <!DOCTYPE html>
 <html>
-  <title>Update Organization Details</title>
   <link
     rel="stylesheet"
     type="text/css"
     href="{% static '/css/org_update.css' %}"
   />
   <div class="body">
-    <button>Save</button>
+    <!-- <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{% url 'login:update-org' %}">{% trans "Organizations" %}</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {{ organization.name }}
+      </li>
+    </ol> -->
+
     <main>
       <h1>Update Organization Details</h1>
       <form>

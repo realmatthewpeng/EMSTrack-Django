@@ -70,6 +70,8 @@ from .forms import (
     UserHospitalPermissionAdminForm,
     RestartForm,
     UserProfileAdminForm,
+    OrganizationCreateForm,
+    OrganizationUpdateForm
 )
 from .models import (
     TemporaryPassword,
@@ -1127,9 +1129,18 @@ class OrganizationDetailView(DetailView):
     model = Organization
     template_name = 'login/org_detail.html'
 
-class OrganizationUpdateView(UpdateView):
+class OrganizationUpdateView(SuccessMessageMixin, UpdateView):
     model = Organization
+    # form_class = OrganizationUpdateForm
+    fields = []
+    # template_name = 'login/org_update.html'
     template_name = 'login/org_form.html'
+
+    def get_success_message(self, cleaned_data):
+        return "Successfully updated location '{}'".format(cleaned_data['name'])
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
 
 class OrganizationExportView(ExportModelMixin, View):
     model = Organization

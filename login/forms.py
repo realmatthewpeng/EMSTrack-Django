@@ -360,3 +360,30 @@ class RestartForm(forms.Form):
 
 class UploadFileForm(forms.Form):
     file = forms.FileField()
+
+class OrganizationCreateForm(forms.ModelForm):
+    class Meta:
+        model = Organization
+        fields = []
+
+class OrganizationUpdateForm(OrganizationCreateForm):
+
+    class Meta:
+        model = Organization
+        fields = ['name', 'description']
+
+    def clean(self):
+        # call super
+        super().clean()
+
+        # if updating status or location
+        if 'status' in self.changed_data or 'location' in self.changed_data:
+            # See https://stackoverflow.com/questions/5275476/django-alter-form-data-in-clean-method
+            # Mauricio: I think this odd behavior is because timestamp is not present in the form
+
+            # update timestamp as well
+            now = timezone.now()
+            self.cleaned_data["timestamp"] = now
+            self.instance.timestamp = now
+
+        return self.cleaned_data

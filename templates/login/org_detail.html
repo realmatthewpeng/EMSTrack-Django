@@ -11,9 +11,10 @@
   />
   <body>
     <div class="body">
-      <button>Return to Organizations Page</button>
-
       <!-- See ../ambulance/ambulance_details  -->
+
+      <!-- ONE VEHICLE, MULTIPLE ORGANIZATIONS EACH VEHICLE, ONE FOREIGN KEY TO ITS
+      ORGANIZATIONS ADD A FIELD TO VEHICLES CALLED "organization" THAT STORES THE FOREIGN KEY, ADD A MIGRATION TO UPDATE DATABASE (ALL EXISTING VEHICLES HAVE TO POINT TO AN ORG, BUT THESE VEHICLES WERE CREATED BEFORE ORGS EXISTED BUT THEY HAVE TO POINT AT SOMETHING. BEFORE TESTING, MAKE SURE TO CREATE A NEW AMBULANCE)-->
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -25,8 +26,10 @@
       </ol>
 
       <main>
-        <h1>Organization Details</h1>
-        <a href="./org_update.html">Edit</a>
+        <h1>{% trans "Organization Details" %}</h1>
+        <a href="{% url 'login:update-org' organization.id %}"
+          >{% trans "Edit" %}</a
+        >
         <dl>
           <dt>{% trans "Organization Name:" %}</dt>
           <dd>{{ organization.name }}</dd>

@@ -1,17 +1,49 @@
-{% extends "base.html" %}
-{% load static %}
-{% load i18n %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% load i18n %} {% block content %}
 
 <div class="container">
-    <div class="row">
-        <div class="col-md">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{% url 'login:list-org' %}">{% trans "Organizations" %}</a>
+      </li>
+      {% if organization %}
+      <li class="breadcrumb-item">
+        <a href="{% url 'login:detail-org' pk=organization.id %}"
+          >{{ organization.name }}</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {% trans "Update" %}
+      </li>
+      {% else %}
+      <li class="breadcrumb-item active" aria-current="page">
+        {% trans "Create" %}
+      </li>
+      {% endif %}
+    </ol>
+  </nav>
 
-            <h1>{% trans "TODO: Page to update organization details." %}</h1>
+  <div class="row">
+    <div class="col">
+      <h1>{% trans "Organization" %}</h1>
 
-        </div>
+      <form method="POST" class="post-form">
+        {% csrf_token %}
+
+        <h3>{% trans "Details" %}:</h3>
+
+        <table>
+          {{ form }}
+        </table>
+
+        <p>
+          <button type="submit" class="btn btn-primary">
+            {% trans "Save" %}
+          </button>
+        </p>
+      </form>
     </div>
+  </div>
 </div>
 
 {% endblock %}
