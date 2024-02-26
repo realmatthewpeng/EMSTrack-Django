@@ -3,6 +3,7 @@ import logging
 from braces.views import CsrfExemptMixin
 from django.conf import settings
 from django.contrib import messages
+from django.contrib import admin
 from django.contrib.auth import login
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.hashers import make_password
@@ -51,6 +52,7 @@ from emstrack.mixins import (
     ImportModelMixin,
     ProcessImportModelMixin,
     PaginationViewMixin,
+    UpdatedByWithInlinesMixin,
 )
 from emstrack.models import defaults
 from emstrack.views import get_page_links, get_page_size_links
@@ -1116,7 +1118,7 @@ class OrganizationListView(PaginationViewMixin, ListView):
 
 class OrganizationCreateView(SuccessMessageMixin, CreateView):
     model = Organization
-    fields = ['name', 'description']
+    form_class = OrganizationCreateForm
     template_name = 'login/org_create_form.html'
 
     def get_success_message(self, cleaned_data):

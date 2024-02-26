@@ -362,9 +362,14 @@ class UploadFileForm(forms.Form):
     file = forms.FileField()
 
 class OrganizationCreateForm(forms.ModelForm):
+    users = forms.ModelMultipleChoiceField(
+                queryset=User.objects.all(),
+                widget=forms.CheckboxSelectMultiple,
+                required=True)
+
     class Meta:
         model = Organization
-        fields = []
+        fields = ['name', 'description', 'users']
 
 class OrganizationUpdateForm(OrganizationCreateForm):
 

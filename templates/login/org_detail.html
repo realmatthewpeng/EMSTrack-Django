@@ -45,13 +45,20 @@
           <dd>{% trans "TAGS" %}</dd> -->
           <dt>{% trans "User List:" %}</dt>
           <dd>
-            <ul>
-              <li>{% trans "User 1: ID_NUM" %}</li>
-              <li>{% trans "User 2: ID_NUM" %}</li>
-              <li>{% trans "User 3: ID_NUM" %}</li>
-              <li>{% trans "User 4: ID_NUM" %}</li>
-              <li>{% trans "User 5: ID_NUM" %}</li>
-            </ul>
+            <table class="table table-striped table-sm">
+              <thead>
+              <tr>
+                  <th>{% trans "Username" %}</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for user in organization.users.all %}
+              <tr>
+                  <td>{{ user.username }}</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+          </table>
           </dd>
           <dt>{% trans "Vehicle List:" %}</dt>
           <dd>
