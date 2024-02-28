@@ -10,6 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from djangoformsetjs.utils import formset_media_js
+from django_select2.forms import Select2MultipleWidget
 
 from ambulance.models import Ambulance
 from hospital.models import Hospital
@@ -364,7 +365,7 @@ class UploadFileForm(forms.Form):
 class OrganizationCreateForm(forms.ModelForm):
     users = forms.ModelMultipleChoiceField(
                 queryset=User.objects.all(),
-                widget=forms.CheckboxSelectMultiple,
+                widget=Select2MultipleWidget,
                 required=True)
 
     class Meta:
