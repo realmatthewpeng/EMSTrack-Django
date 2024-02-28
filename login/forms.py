@@ -371,11 +371,15 @@ class OrganizationCreateForm(forms.ModelForm):
         model = Organization
         fields = ['name', 'description', 'users']
 
-class OrganizationUpdateForm(OrganizationCreateForm):
+class OrganizationUpdateForm(forms.ModelForm):
+    users = forms.ModelMultipleChoiceField(
+            queryset=User.objects.all(),
+            widget=forms.CheckboxSelectMultiple,
+            required=True)
 
     class Meta:
         model = Organization
-        fields = ['name', 'description']
+        fields = ['name', 'description', 'users']
 
     def clean(self):
         # call super

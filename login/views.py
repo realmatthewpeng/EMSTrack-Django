@@ -1133,9 +1133,7 @@ class OrganizationDetailView(DetailView):
 
 class OrganizationUpdateView(SuccessMessageMixin, UpdateView):
     model = Organization
-    # form_class = OrganizationUpdateForm
-    fields = []
-    # template_name = 'login/org_update.html'
+    form_class = OrganizationUpdateForm
     template_name = 'login/org_form.html'
 
     def get_success_message(self, cleaned_data):
