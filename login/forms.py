@@ -375,7 +375,7 @@ class OrganizationCreateForm(forms.ModelForm):
 class OrganizationUpdateForm(forms.ModelForm):
     users = forms.ModelMultipleChoiceField(
             queryset=User.objects.all(),
-            widget=forms.CheckboxSelectMultiple,
+            widget=Select2MultipleWidget,
             required=True)
 
     class Meta:
