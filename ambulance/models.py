@@ -12,11 +12,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from emstrack.latlon import calculate_orientation, calculate_distance, stationary_radius
 from emstrack.mixins import PublishMixin
-from emstrack.models import AddressModel, UpdatedByModel, defaults, UpdatedByHistoryModel
+from emstrack.models import AddressModel, UpdatedByModel, defaults, UpdatedByHistoryModel, 
 from emstrack.util import make_choices
 from emstrack.sms import client as sms_client
 
 from equipment.models import EquipmentHolder
+
+# ??
+from login.models import Organization
 
 logger = logging.getLogger(__name__)
 
@@ -167,6 +170,9 @@ class Ambulance(PublishMixin,
 
     # default value for _loaded_values
     _loaded_values = None
+
+    # devel 2024 migration step
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, verbose_name=_('organization'), null=False)
 
     @classmethod
     def from_db(cls, db, field_names, values):
