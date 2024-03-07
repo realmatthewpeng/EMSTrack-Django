@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib.admin.views.decorators import staff_member_required
 from rest_framework.authtoken.views import obtain_auth_token
 
@@ -172,5 +172,7 @@ urlpatterns = [
     url(r'^organization/export/$',
         staff_member_required(views.OrganizationExportView.as_view()),
         name='export-org'),
+
+    url(r"^select2/", include("django_select2.urls")),
     
 ]

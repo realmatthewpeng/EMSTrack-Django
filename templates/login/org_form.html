@@ -1,4 +1,7 @@
-{% extends "base.html" %} {% load static %} {% load i18n %} {% block content %}
+{% extends "base.html" %} 
+{% load static %} 
+{% load i18n %} 
+{% block content %}
 
 <div class="container">
   <nav aria-label="breadcrumb">
@@ -26,7 +29,10 @@
   <div class="row">
     <div class="col">
       <h1>{% trans "Organization" %}</h1>
-
+      {{ form.media.css }}
+      <style>
+          input, select {width: 100%}
+      </style>
       <form method="POST" class="post-form">
         {% csrf_token %}
 
@@ -42,6 +48,7 @@
           </button>
         </p>
       </form>
+      {{ form.media.js }}
     </div>
   </div>
 </div>

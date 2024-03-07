@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     'jquery',
     'djangoformsetjs',
     'webpack_loader',
+    'django_select2'
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
