@@ -172,7 +172,10 @@ class Ambulance(PublishMixin,
     _loaded_values = None
 
     # devel 2024 migration step
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, verbose_name=_('organization'), null=False)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, verbose_name=_('organization'), null=True)
+
+
+    ### Initialization of default user at migration level or initialiation level? When does migration take place?
 
     @classmethod
     def from_db(cls, db, field_names, values):
