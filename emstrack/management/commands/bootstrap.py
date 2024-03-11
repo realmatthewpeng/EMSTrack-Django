@@ -6,6 +6,11 @@ from django.conf import settings
 from django.db import DEFAULT_DB_ALIAS
 from django.db import IntegrityError
 
+from django.db.models import F, Value
+from django.db.models.functions import Coalesce
+
+from ambulance.models import Ambulance
+from login.models import Organization
 
 class Command(BaseCommand):
 
@@ -83,6 +88,14 @@ class Command(BaseCommand):
 
         except IntegrityError as e:
             self.stdout.write(self.style.WARNING("Guest user already exists."))
+
+        # Create or get the general organization
+        general_organization, _ = Organization.objects.get_or_create(name='Unassigned')
+
+        # Update existing ambulances to point to the general organization
+        Ambulance.objects.filter(organization__isnull=True).update(
+            organization=Coalesce('organization_id', Value(general_organization.id))
+        )
 
         if options['verbosity'] >= 1:
             self.stdout.write(

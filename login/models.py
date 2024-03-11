@@ -58,9 +58,6 @@ class Organization(models.Model):
     name = models.CharField(_('name'), max_length=100, unique=True)
     description = models.CharField(_('description'), max_length=100, blank=True)
     users = models.ManyToManyField(User)
-    # created_on = models.DateTimeField(_('created_on'), auto_now_add=True)
-    # vehicles = []
-    # vehicles = models.OneToManyField(User)  FOREIGN KEY STUFF
 
     def get_absolute_url(self):
         return reverse('login:detail-org', kwargs={'pk': self.id})

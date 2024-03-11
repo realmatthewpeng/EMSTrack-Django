@@ -11,27 +11,6 @@
   />
   <body>
     <div class="body">
-      <!-- See ../ambulance/ambulance_details  -->
-
-      <!-- ONE VEHICLE, MULTIPLE ORGANIZATIONS EACH VEHICLE, ONE FOREIGN KEY TO ITS
-      ORGANIZATIONS ADD A FIELD TO VEHICLES CALLED "organization" THAT STORES THE FOREIGN KEY, ADD A MIGRATION TO UPDATE DATABASE (ALL EXISTING VEHICLES HAVE TO POINT TO AN ORG, BUT THESE VEHICLES WERE CREATED BEFORE ORGS EXISTED BUT THEY HAVE TO POINT AT SOMETHING. BEFORE TESTING, MAKE SURE TO CREATE A NEW AMBULANCE)-->
-
-      <!-- CREATE ORGANIZATION IF RECORDS EXIST, ELSE NOTHING -->
-      <!-- MODIFY BOOTSTRAP TO CREATE ORGANIZATION IF IT DOES NOT EXIST -->
-      <!-- BY THE MIGRATION PHASE, THE BOOTSTRAP PROCESS HAS NOT COMPLETED YET, MEANING THAT THE DATABASE IS NOT THE MOST CURRENT VERSION YET -->
-
-      <!-- RUN MIGRATION ONCE, NULL = TRUE, QUERIES THE DATABASE AND CHECKS FOR VEHICLES (WITH NO ORGANIZATION EXISTING YET) AND ADDS A DEFAULT ORG -->
-      <!-- BEFORE RUNNING THE MIGRATION AGAIN, RECONFIGURE THE BOOTSTRAP FILE TO ADD A DEFAULT ORG TO REPLACE THE NULL COLUMN VALUE -->
-      <!-- RUN MIGRATION AGAIN, NULL = FALSE, NOW THAT THE BOOTSTRAP HAS COMPILED THE MOST RECENT VERSION OF THE DATABASE AND A POPULATED ORG COLUMN THAT ISNT NULL -->
-
-      <!-- NEED FUNCTIONALITY TO MOVE A VEHICLE FROM ONE ORGANIZATION TO ANOTHER -->
-
-      <!-- DIRECTORY -->
-      <!-- Docker Entrypoint Steps (Order of Executions): EMSTrack-Django/docker-entrypoint -->
-      <!-- BOOTSTRAP: EMSTrack-Django/emstrack/management/commands/bootstrap.py -->
-
-      <!-- AT LOGIN, ADD ORGANIZATION TO THE REQUEST -->
-
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="{% url 'login:list-org' %}">{% trans "Organizations" %}</a>
@@ -51,14 +30,8 @@
           <dd>{{ organization.name }}</dd>
           <dt>{% trans "Description" %}</dt>
           <dd>{{ organization.description }}</dd>
-          <!-- <dt>{% trans "Associated Medical Organization" %}</dt>
-          <dd>{% trans "GROUP" %}</dd> -->
-          <!-- <dt>{% trans "Creation Date:" %}</dt>
-          <dd>{{ organization.created_on }}</dd> -->
           <dt>{% trans "Number of Registered Vehicles:" %}</dt>
           <dd>{% trans "NUM_REG" %}</dd>
-          <!-- <dt>{% trans "Tags:" %}</dt>
-          <dd>{% trans "TAGS" %}</dd> -->
           <dt>{% trans "User List:" %}</dt>
           <dd>
             <table class="table table-striped table-sm">
