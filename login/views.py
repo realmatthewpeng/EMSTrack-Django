@@ -1162,4 +1162,3 @@ class OrganizationProcessImportView(SuccessMessageMixin, ProcessImportModelMixin
     success_url = reverse_lazy('login:list-org')
 
     import_breadcrumbs = {'login:list-org': _("Organizations")}
-    
