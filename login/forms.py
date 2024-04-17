@@ -397,3 +397,4 @@ class OrganizationUpdateForm(forms.ModelForm):
             self.instance.timestamp = now
 
         return self.cleaned_data
+    

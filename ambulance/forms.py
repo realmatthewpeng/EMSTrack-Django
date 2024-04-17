@@ -38,6 +38,7 @@ class AmbulanceUpdateForm(AmbulanceCreateForm):
 
         return self.cleaned_data
 
+
 # Location forms
 
 class LocationAdminCreateForm(forms.ModelForm):
